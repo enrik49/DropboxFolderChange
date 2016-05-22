@@ -1,0 +1,9 @@
+D:\Projects\DropboxFolderChange\DropboxFolderChange\bin\Debug\DropboxFolderChange.exe.config
+D:\Projects\DropboxFolderChange\DropboxFolderChange\bin\Debug\DropboxFolderChange.exe
+D:\Projects\DropboxFolderChange\DropboxFolderChange\bin\Debug\DropboxFolderChange.pdb
+D:\Projects\DropboxFolderChange\DropboxFolderChange\bin\Debug\DropboxFolderChange.xml
+D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.Resources.resources
+D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.vbproj.GenerateResource.Cache
+D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.exe
+D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.xml
+D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.pdb
