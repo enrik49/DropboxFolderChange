@@ -7,3 +7,4 @@ D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChang
 D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.exe
 D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.xml
 D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.pdb
+D:\Projects\DropboxFolderChange\DropboxFolderChange\obj\Debug\DropboxFolderChange.Form1.resources
