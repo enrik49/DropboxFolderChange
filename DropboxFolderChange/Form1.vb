@@ -4,13 +4,12 @@ Imports System.Text.RegularExpressions
 Public Class Form1
 
     Dim fileConf As String = "C:\prova.txt"
-
-
+    Dim watcher As New List(Of FileSystemWatcher())
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Load configuration
         loadConf()
         visibilityForm(False)
-        Run()
+        Run(DataGridView1.Rows.Count)
         DataGridView1.Rows(0).Selected = True
     End Sub
 
@@ -73,22 +72,26 @@ Public Class Form1
         DataGridView1.Rows(e.RowIndex).Selected = True
     End Sub
 
-    Private Shared Sub Run()
+    Private Sub Run(sizeGrid As Integer)
 
         Dim args() As String = System.Environment.GetCommandLineArgs()
 
         ' Create a new FileSystemWatcher and set its properties.
-        Dim watcher As New FileSystemWatcher()
-        watcher.Path = "C:\"
-        ' Watch for changes in LastAccess and LastWrite times, and
-        ' the renaming of files or directories. 
-        watcher.NotifyFilter = (NotifyFilters.LastAccess Or NotifyFilters.LastWrite Or NotifyFilters.FileName Or NotifyFilters.DirectoryName)
+        For i As Integer = 0 To sizeGrid
+            Dim watch As New FileSystemWatcher()
 
-        ' Add event handlers.
-        AddHandler watcher.Changed, AddressOf OnChanged
+            watch.Path = "C:\"
+            ' Watch for changes in LastAccess and LastWrite times, and
+            ' the renaming of files or directories. 
+            watch.NotifyFilter = (NotifyFilters.LastAccess Or NotifyFilters.LastWrite Or NotifyFilters.FileName Or NotifyFilters.DirectoryName)
 
-        ' Begin watching.
-        watcher.EnableRaisingEvents = True
+            ' Add event handlers.
+            AddHandler watch.Changed, AddressOf OnChanged
+
+            ' Begin watching.
+            watch.EnableRaisingEvents = True
+            watcher.Add(watch)
+        Next
 
     End Sub
 
