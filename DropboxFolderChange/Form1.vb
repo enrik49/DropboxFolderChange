@@ -4,13 +4,14 @@ Imports System.Text.RegularExpressions
 Public Class Form1
 
     Dim fileConf As String = "C:\prova.txt"
-    Dim watcher As New List(Of FileSystemWatcher())
+    Dim viewFile As WatchFile
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Load configuration
         loadConf()
         visibilityForm(False)
-        Run(DataGridView1.Rows.Count)
         DataGridView1.Rows(0).Selected = True
+        addListenersFile()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -70,35 +71,6 @@ Public Class Form1
 
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         DataGridView1.Rows(e.RowIndex).Selected = True
-    End Sub
-
-    Private Sub Run(sizeGrid As Integer)
-
-        Dim args() As String = System.Environment.GetCommandLineArgs()
-
-        ' Create a new FileSystemWatcher and set its properties.
-        For i As Integer = 0 To sizeGrid
-            Dim watch As New FileSystemWatcher()
-
-            watch.Path = "C:\"
-            ' Watch for changes in LastAccess and LastWrite times, and
-            ' the renaming of files or directories. 
-            watch.NotifyFilter = (NotifyFilters.LastAccess Or NotifyFilters.LastWrite Or NotifyFilters.FileName Or NotifyFilters.DirectoryName)
-
-            ' Add event handlers.
-            AddHandler watch.Changed, AddressOf OnChanged
-
-            ' Begin watching.
-            watch.EnableRaisingEvents = True
-            watcher.Add(watch)
-        Next
-
-    End Sub
-
-    ' Define the event handlers.
-    Private Shared Sub OnChanged(source As Object, e As FileSystemEventArgs)
-        ' Specify what is done when a file is changed, created, or deleted.
-        MsgBox("Ha cambiat el fitxer " & e.FullPath)
     End Sub
 
     Private Sub loadConf()
@@ -172,6 +144,13 @@ Public Class Form1
         file = My.Computer.FileSystem.OpenTextFileWriter(fileConf, True)
         file.WriteLine(str)
         file.Close()
+    End Sub
+
+    Private Sub addListenersFile()
+        viewFile = New WatchFile(DataGridView1.Rows.Count)
+        For i As Integer = 0 To (DataGridView1.Rows.Count - 2)
+            viewFile.AddElement(DataGridView1.Rows(i).Cells(0).Value(), DataGridView1.Rows(i).Cells(1).Value())
+        Next
     End Sub
 
 End Class
